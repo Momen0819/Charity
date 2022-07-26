@@ -1,0 +1,528 @@
+﻿<!doctype html>
+<html lang="ar">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+        ساعد تُساعَد
+    </title>
+    <!-- icon -->
+    <link rel="icon" href="site/img/icon.png" type="image/x-icon">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="site/css/bootstrap-rtl.css">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="site/css/mdb.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="site/css/all.css">
+    <!-- owl slider -->
+    <link rel="stylesheet" href="site/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="site/css/owl.theme.default.min.css">
+    <!-- swiper -->
+    <link rel="stylesheet" href="site/css/swiper.css">
+    <!-- animate -->
+    <link rel="stylesheet" href="site/css/aos.css">
+    <!-- Custom style  -->
+    <link rel="stylesheet" href="site/css/style.css">
+    <!-- fonts  -->
+    <link href="css.css?family=Cairo&display=swap" rel="stylesheet">
+
+    <link href="admin/assets/vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css">
+    <style>
+        .toast {
+            background-position: calc(100% - 15px) center !important
+        }
+
+            .toast .toast-close-button {
+                font-family: "LineAwesome";
+                text-decoration: inherit;
+                text-rendering: optimizeLegibility;
+                text-transform: none;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-smoothing: antialiased;
+                outline: none !important;
+                font-size: 0
+            }
+
+                .toast .toast-close-button:before {
+                    content: ""
+                }
+
+                .toast .toast-close-button:before {
+                    font-size: 1.1rem
+                }
+
+        .toast-success {
+            background-color: #34bfa3;
+            color: #fff;
+            -webkit-box-shadow: 0px 0px 15px 1px rgba(69,65,78,0.2);
+            box-shadow: 0px 0px 15px 1px rgba(69,65,78,0.2)
+        }
+
+        #toast-container > div:hover {
+            -webkit-box-shadow: 0px 1px 15px 1px rgba(69,65,78,0.3);
+            box-shadow: 0px 1px 15px 1px rgba(69,65,78,0.3)
+        }
+
+        .toast-warning {
+            background-color: #ffb822;
+            color: #111;
+            -webkit-box-shadow: 0px 0px 15px 1px rgba(69,65,78,0.2);
+            box-shadow: 0px 0px 15px 1px rgba(69,65,78,0.2)
+        }
+
+        #toast-container > div:hover {
+            -webkit-box-shadow: 0px 1px 15px 1px rgba(69,65,78,0.3);
+            box-shadow: 0px 1px 15px 1px rgba(69,65,78,0.3)
+        }
+
+        .toast-info {
+            background-color: #36a3f7;
+            color: #fff;
+            -webkit-box-shadow: 0px 0px 15px 1px rgba(69,65,78,0.2);
+            box-shadow: 0px 0px 15px 1px rgba(69,65,78,0.2)
+        }
+
+        #toast-container > div:hover {
+            -webkit-box-shadow: 0px 1px 15px 1px rgba(69,65,78,0.3);
+            box-shadow: 0px 1px 15px 1px rgba(69,65,78,0.3)
+        }
+
+        .toast-error {
+            background-color: #f4516c;
+            color: #fff;
+            -webkit-box-shadow: 0px 0px 15px 1px rgba(69,65,78,0.2);
+            box-shadow: 0px 0px 15px 1px rgba(69,65,78,0.2)
+        }
+
+        #toast-container > div:hover {
+            -webkit-box-shadow: 0px 1px 15px 1px rgba(69,65,78,0.3);
+            box-shadow: 0px 1px 15px 1px rgba(69,65,78,0.3)
+        }
+
+        body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown), html.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+            overflow: auto
+        }
+
+        @media screen\0 {
+            body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown), html.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+                overflow: visible
+            }
+        }
+    </style>
+    <style>
+        #example23_length {
+            margin-right: 15%;
+        }
+
+        #map-canvas {
+            height: 100%;
+            margin: 0;
+        }
+
+            #map-canvas .centerMarker {
+                position: absolute;
+                background: url(mapfiles/markers2/marker.png) no-repeat;
+                top: 50%;
+                left: 50%;
+                z-index: 1;
+                margin-left: -10px;
+                margin-top: -34px;
+                height: 34px;
+                width: 20px;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body id="body">
+    <div class="loading">
+        <div class="triple-spinner"></div>
+    </div>
+    <!-- ================ header ================= -->
+    <div class="container-fluid mb-3 mb-lg-0 topHeader">
+        <div class="row">
+            <div class=" col-md-4 col-12 TopLogo d-flex justify-content-center justify-content-md-end align-items-center px-md-5">
+                <a href="index.htm">
+                    <img src="site/img/logo.png">
+                </a>
+            </div>
+            <div class=" col-md-4 col-12  my-2 d-flex justify-content-center align-items-center">
+
+            </div>
+            <div class=" col-md-4 col-12 d-flex my-2 justify-content-center justify-content-md-start align-items-center px-md-5 socialIcons">
+                <!--Facebook-->
+                <a class="fb-ic" href="#" target="_blank" role="button"><i class="fab fa-lg fa-facebook-f"></i></a>
+                <!--Twitter-->
+                <a class="tw-ic" href="#" target="_blank" role="button"><i class="fab fa-lg fa-twitter"></i></a>
+                <!--Google +-->
+                <a class="gplus-ic" href="#" target="_blank" role="button"><i class="fab fa-lg fa-google-plus-g"></i></a>
+                <!--WhatsApp-->
+                <a class="whatsapp-ic" href="#" target="_blank" role="button"><i class="fab fa-lg fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg  sticky-top py-0">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="site/img/logo.png" style="height: 80px;" class="d-none">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#MainNav">
+                <span class="navbar-toggler-icon d-flex justify-content-center align-items-center"> <i class="fas fa-bars text-white"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="MainNav">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">الصفحة الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">تعرف علينا</a>
+                    </li>
+                    <!-- Features -->
+                    <li class="nav-item dropdown mega-dropdown active">
+                        <a class="nav-link dropdown-toggle text-uppercase" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            المشاريع
+                        </a>
+                        <div class="dropdown-menu mega-menu  z-depth-1  p-4">
+                            <div class=" sub-menu">
+                                <ul class="list-unstyled row">
+                                    <li class=" col-md-4 col-6 col-lg-3 ">
+                                        <a class="menu-item" href="#">الكل</a>
+                                    </li>
+                                    <li class=" col-md-4 col-6 col-lg-3 ">
+                                        <a class="menu-item" href="#">   تزويج أيتام</a>
+                                    </li>
+                                    <li class=" col-md-4 col-6 col-lg-3 ">
+                                        <a class="menu-item" href="#">  كفالة يتيم</a>
+                                    </li>
+                                    <li class=" col-md-4 col-6 col-lg-3 ">
+                                        <a class="menu-item" href="#">  الغارمين</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">الأخبار</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">تواصل معنا</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================ /header ================= -->
+    <!-- ================ mainSlider ================= -->
+    <section id="MainSlider">
+        <div class="swiper-container MainSlider-container ">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide mainSlideItem" style="background-image:url(uploads/slider/3db1a3cb56d445badde731bd4b8d4672.jpg)">
+                    <div class=" sliderOverlay"></div>
+                    <div class=" p-5">
+                        <h1>لدينا عدة مشاريع مختلفة</h1>
+                        <p>يمكنك تقديم الدعم فيها</p>
+                        <a href="#" class=" btn btn-success btn-rounded ">المشاريع </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class=" d-flex justify-content-center align-items-center goDownDiv">
+            <a href="#AboutUs" class="  btn btn-white goDown bounce"> <i class="fa fa-angle-double-down amber-text " aria-hidden="true"></i> </a>
+        </div>
+    </section>
+    <!-- ================ /mainSlider ================= -->
+    <!-- ================ /service ================= -->
+    <section id="projects">
+        <div class="container">
+            <div class="knockout mb-4" data-aos="fade-up">
+                <a>مشاريع ساعد تُساعَد</a>
+            </div>
+            <div class="row">
+
+                <div class=" col-lg-4 col-md-6 p-1 d-flex justify-content-center align-items-center" data-aos="fade-up">
+                    <div class="project-card">
+                        <img src="uploads/product/Charity-scaled.jpeg">
+                        <span class=" projectCaption ">
+                            <h3>
+                                تزويج أيتام
+                            </h3>
+                            <p>
+                                يمكنك تقديم الدعم فيها
+                            </p>
+                            <a href="#"> <i class="fas fa-donate mx-2"></i> تبرع الأن <i class="fas fa-long-arrow-alt-left mx-2"></i></a>
+                        </span>
+                    </div>
+                </div>
+                <div class=" col-lg-4 col-md-6 p-1 d-flex justify-content-center align-items-center" data-aos="fade-up">
+                    <div class="project-card">
+                        <img src="uploads/product/Charity-scaled.jpeg">
+                        <span class=" projectCaption ">
+                            <h3>
+                                كفالة يتيم
+                            </h3>
+                            <p>
+                                يمكنك تقديم الدعم فيها
+                            </p>
+                            <a href="#"> <i class="fas fa-donate mx-2"></i> تبرع الأن <i class="fas fa-long-arrow-alt-left mx-2"></i></a>
+                        </span>
+                    </div>
+                </div>
+                <div class=" col-lg-4 col-md-6 p-1 d-flex justify-content-center align-items-center" data-aos="fade-up">
+                    <div class="project-card">
+                        <img src="uploads/product/Charity-scaled.jpeg">
+                        <span class=" projectCaption ">
+                            <h3>
+                                الغارمين
+                            </h3>
+                            <p>
+                                يمكنك تقديم الدعم فيها
+                            </p>
+                            <a href="#"> <i class="fas fa-donate mx-2"></i> تبرع الأن <i class="fas fa-long-arrow-alt-left mx-2"></i></a>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================ /AboutUs ================= -->
+    <div class="bgDiv" data-aos="fade-up" style="background:none">
+        <div class=" overlay"></div>
+        <div class=" content">
+            <h1> دعمكم يساعدهم لمعيشة افضل</h1>
+        </div>
+    </div>
+    <!-- ================ AboutUs ================= -->
+    <section id="AboutUs" class=" pt-50 pb-5">
+        <div class="container">
+            <div class="knockout" data-aos="fade-up">
+                <a>من نحن</a>
+            </div>
+            <hr class="brace">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aboutDiv z-depth-1 rounded mt-4 text-center p-4" data-aos="fade-up">
+                        <div class=" py-3">
+                            <h3>
+                                أهدافنا
+                            </h3>
+                        </div>
+                        <p>
+
+                            إن الفريق يتكون من 5 أفراد، منتشرين في كل المحافظات، وليس في الغربية فقط، مشيرا إلى أن المقر الرئيسي يقع في محافظة القاهرة؛ إذ كانوا يعملون بشكل شخصي حبا في الخير، بداية من عام 2018، من أجل تزويج فتاة، واكتشفوا وجود حالات كثيرة من الأيتام في حاجة إلى تجهيز، ما دفعهم إلى تكوين الفريق.
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer  style="background:none">
+        <div class=" footerOverlay"></div>
+        <div class=" FooterSocial ">
+            <div class="row py-3 m-0 d-flex align-items-center">
+                <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                    <h6 class="mb-0 text-white"> مواقع التواصل</h6>
+                </div>
+                <div class="col-md-6 col-lg-7 text-center text-md-right">
+                    <!-- Facebook -->
+                    <a class="fb-ic" href="#" target="_blank">
+                        <i class="fab fa-facebook-f white-text mr-4"> </i>
+                    </a>
+                    <!-- Twitter -->
+                    <a class="tw-ic" href="#" target="_blank">
+                        <i class="fab fa-twitter white-text mr-4"> </i>
+                    </a>
+                    <!-- Google +-->
+                    <a class="gplus-ic" href="#" target="_blank">
+                        <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                    </a>
+                    <!--Linkedin -->
+                    <a class="li-ic" href="#" target="_blank">
+                        <i class="fab fa-linkedin-in white-text mr-4"> </i>
+                    </a>
+                    <!--Instagram-->
+                    <a class="ins-ic" href="#" target="_blank">
+                        <i class="fab fa-instagram white-text mr-4"> </i>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        <div class="container text-center text-md-right mt-5">
+            <div class="row mt-3">
+                <div class="col-md-4 col-12 mx-auto mb-4">
+                    <img class="d-block mb-2 rounded" src="site/img/logo.png" alt="">
+                    <p style="line-height: 30px;" class=" pl-3">لجنة تراحم لمساعدة اسر السجناء واسرهم وغيرهم لدينا مشاريع في مجالات مختلفة</p>
+                </div>
+                <div class="col-md-2  col-6 mx-auto mb-4">
+                    <h6 class="text-uppercase fontTitle font-weight-bold">روابط سريعة</h6>
+                    <p>
+                        <a href="#">تعرف علينا</a>
+                    </p>
+                    <p>
+                        <a href="#">المشاريع</a>
+                    </p>
+                    <p>
+                        <a href="#">تواصل معنا</a>
+                    </p>
+
+                </div>
+                <div class="col-md-2  col-6 mx-auto mb-4">
+                    <h6 class="text-uppercase fontTitle font-weight-bold">عن الموقع</h6>
+                    <p>
+                        <a href="#">عن الموقع</a>
+                    </p>
+                    <p>
+                        <a href="#">الاسئلة الشائعة</a>
+                    </p>
+                    <p>
+                        <a href="#">الرؤية والرسالة</a>
+                    </p>
+
+                </div>
+                <div class="col-md-4  col-8 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fontTitle font-weight-bold">تواصل معنا</h6>
+                    <div class="row">
+                            <input type="text" class="col-12 form-control mb-2" name="name" placeholder="الإسم" required="">
+                            <input type="email" class="col-12 form-control mb-2" name="email" placeholder=" البريد الالكتروني" required="">
+                            <textarea rows="3" class="col-md-9 form-control m-0" name="text" placeholder=" نص السؤال.." required=""></textarea>
+                            <div class="col-3  d-flex justify-content-center align-items-center">
+                                <button type="submit" class=" btn btn-primary m-0 d-flex justify-content-center align-items-center" style="width: 100% ;height: 80%;font-size: 22px;">
+                                    <i class="fa fa-paper-plane"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <br /><br />
+        </div>
+    </footer>
+
+    <script src="site/js/jquery-3.4.1.min.js"></script>
+    <script src="site/js/popper.min.js"></script>
+    <script src="site/js/bootstrap.min.js"></script>
+    <script src="site/js/mdb.min.js"></script>
+    <script src="site/js/smooth-scroll.min.js"></script>
+    <script src="site/js/owl.carousel.min.js"></script>
+    <script src="site/js/swiper.js"></script>
+    <script src="site/js/aos.js"></script>
+    <script src="site/js/Custom.js"></script>
+    <script type="text/javascript">
+        $('#news_search').on('keyup', function () {
+            $value = $(this).val();
+            $.ajax({
+                type: 'get',
+                url: 'http://tarahum.dalel.96.lt/news_search',
+                data: { 'search': $value },
+                success: function (data) {
+                    if (data) {
+                        //  document.getElementById("content_to_search").style.display = "none";
+                        $('#old').hide();
+                        $('#new').show();
+
+                        $('#data').html(data);
+                        // document.getElementById("content_to_search").style.display = "none";
+                    } else {
+                        $('#old').hide();
+                        $('#new').show();
+
+                    }
+
+
+
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+    <script src="admin/js/tostar.js"></script>
+    <script>
+
+    </script>
+    <!--end_tostar--->
+    <script type="text/javascript" src="maps/api/js?key=AIzaSyC4l5QxL27z4w0uuD_5X3g0IRhaUdvb0Q4"></script>
+    <script>
+        var map = null;
+        var marker;
+
+        function showlocation() {
+            if ("geolocation" in navigator) {
+                /* geolocation is available */
+                // One-shot position request.
+                navigator.geolocation.getCurrentPosition(callback, error);
+            } else {
+                /* geolocation IS NOT available */
+                console.warn("geolocation IS NOT available");
+            }
+        }
+
+        function error(err) {
+            console.warn('ERROR(' + err.code + '): ' + err.message);
+        };
+
+        function callback(position) {
+
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+            document.getElementById('default_latitude').value = lat;
+            document.getElementById('default_longitude').value = lon;
+            var latLong = new google.maps.LatLng(lat, lon);
+            map.setZoom(16);
+            map.setCenter(latLong);
+        }
+        google.maps.event.addDomListener(window, 'load', initMap);
+
+
+
+        function initMap() {
+            var mapOptions = {
+                center: new google.maps.LatLng
+
+                    (document.getElementById('default_latitude').value, document.getElementById('default_longitude').value)
+
+                ,
+                zoom: 12,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("map-canvas"),
+                mapOptions);
+            google.maps.event.addListener(map, 'center_changed', function () {
+                document.getElementById('default_latitude').value = map.getCenter().lat();
+                document.getElementById('default_longitude').value = map.getCenter().lng();
+            });
+            $('<div/>').addClass('centerMarker').appendTo(map.getDiv())
+                //do something onclick
+                .click(function () {
+                    var that = $(this);
+                    if (!that.data('win')) {
+                        that.data('win', new google.maps.InfoWindow({
+                            content: 'this is the center'
+                        }));
+                        that.data('win').bindTo('position', map, 'center');
+                    }
+                    that.data('win').open(map);
+                });
+        }
+
+
+    </script>
+
+</body>
+</html>
